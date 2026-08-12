@@ -25,6 +25,10 @@ fn handle_connection(mut stream: TcpStream) {
         let image = fs::read("toby-fox.gif").unwrap();
         stream.write_all(&image).unwrap();
     }
+    if request_line.starts_with("GET /SMILE.jpeg") {
+        let image = fs::read("SMILE.jpeg").unwrap();
+        stream.write_all(&image).unwrap();
+    }
     let contents = fs::read_to_string(filename).unwrap();
     let length = contents.len();
 
