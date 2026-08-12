@@ -22,7 +22,7 @@ fn handle_connection(mut stream: TcpStream) {
             ("HTTP/1.1 200 OK", "404.html")
         };
     if request_line.starts_with("GET /toby-fox.gif") {
-        let image = std::fs::read("toby-fox.gif").unwrap();
+        let image = fs::read("toby-fox.gif").unwrap();
         stream.write_all(&image).unwrap();
     }
     let contents = fs::read_to_string(filename).unwrap();
